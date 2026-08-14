@@ -1,0 +1,43 @@
+plugins {
+    id "com.android.application"
+}
+
+android {
+    namespace "com.transactionmanager"
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "com.transactionmanager"
+        minSdk 24
+        targetSdk 35
+        versionCode 7
+        versionName "1.7"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("transaction_manager.jks")
+            storePassword "password123"
+            keyAlias "tm_alias"
+            keyPassword "password123"
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+        }
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "TransactionManager-${variant.versionName}-${variant.name}.apk"
+        }
+    }
+}
+
+dependencies {
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "androidx.core:core:1.9.0"
+}
