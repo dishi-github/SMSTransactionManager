@@ -17,9 +17,9 @@ android {
     signingConfigs {
         release {
             storeFile file("transaction_manager.jks")
-            storePassword "password123"
-            keyAlias "tm_alias"
-            keyPassword "password123"
+            storePassword TM_RELEASE_STORE_PASSWORD
+            keyAlias TM_RELEASE_KEY_ALIAS
+            keyPassword TM_RELEASE_KEY_PASSWORD
         }
     }
 
